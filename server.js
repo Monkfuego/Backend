@@ -11,7 +11,8 @@ mongoose.connect("mongodb+srv://nmoukthika14:1234@cluster0.6k5tphz.mongodb.net/v
 var userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  events : []
+  name : String,
+  events : [{"vr" : 3} , {"laser" : 3} , {"dance" : 3}]
 });
 var users = mongoose.model("login", userSchema);
 app.get("/", (req, res) => {
@@ -23,6 +24,8 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
   var username = req.body.username
   var password = req.body.password
+  var name = req.body.name
+
   var confirmPassword = req.body.confirmPassword
 
 
@@ -32,6 +35,7 @@ app.post("/register", async (req, res) => {
     var data = {
       username: username,
       password: hashedPassword,
+      name : name
     };
     try {
       await users.create(data);
@@ -46,7 +50,9 @@ app.post("/register", async (req, res) => {
   }
 });
 app.post("/signin", async (req, res) => {
-  var { username, password } = req.body;
+  var username = req.body.username
+  var password  = req.body.password
+  var name = req.body.name
   try {
     var user = await users.findOne({ username: username });
 
@@ -54,7 +60,7 @@ app.post("/signin", async (req, res) => {
       var pass = await bcrypt.compare(password, user.password);
 
       if (pass) {
-        res.send("loggedin");
+        res.redirect("main.html");
       } else {
         res.redirect("signin.html");
       }
