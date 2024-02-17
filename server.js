@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 var userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  email: String,
 });
 var users = mongoose.model("users", userSchema);
 app.get("/", (req, res) => {
@@ -24,7 +23,7 @@ app.post("/", async (req, res) => {
   var username = req.body.username
   var password = req.body.password
   var confirmPassword = req.body.confirmPassword
-  var email = req.body.email
+
 
   if (toString(password) == toString(confirmPassword)) {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -32,7 +31,6 @@ app.post("/", async (req, res) => {
     var data = {
       username: username,
       password: hashedPassword,
-      email: email,
     };
     try {
       await users.create(data);
