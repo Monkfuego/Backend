@@ -18,9 +18,9 @@ app.get("/", (req, res) => {
   res.set({
     "Allow-access-Allow-Origin": "*",
   });
-  return res.redirect("/signin.html");
+  return res.redirect("/");
 });
-app.post("/signup", async (req, res) => {
+app.post("/", async (req, res) => {
   var username = req.body.username
   var password = req.body.password
   var confirmPassword = req.body.confirmPassword
@@ -36,7 +36,7 @@ app.post("/signup", async (req, res) => {
     };
     try {
       await users.create(data);
-      res.redirect("signin.html");
+      res.redirect("");
     } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");
@@ -46,7 +46,7 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("Password not matching");
   }
 });
-app.post("/signin", async (req, res) => {
+app.post("/", async (req, res) => {
   var { username, password } = req.body;
   try {
     var user = await users.findOne({ username: username });
@@ -55,12 +55,12 @@ app.post("/signin", async (req, res) => {
       var pass = await bcrypt.compare(password, user.password);
 
       if (pass) {
-        res.redirect("strange.html");
+        res.redirect("");
       } else {
-        res.redirect("signin.html");
+        res.redirect("");
       }
     } else {
-      res.redirect("signin.html");
+      res.redirect("");
     }
   } catch (err) {
     console.error(err);
