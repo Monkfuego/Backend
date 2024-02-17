@@ -17,9 +17,9 @@ app.get("/", (req, res) => {
   res.set({
     "Allow-access-Allow-Origin": "*",
   });
-  return res.redirect("/");
+  return res.redirect("/signin");
 });
-app.post("/", async (req, res) => {
+app.post("/register", async (req, res) => {
   var username = req.body.username
   var password = req.body.password
   var confirmPassword = req.body.confirmPassword
@@ -44,7 +44,7 @@ app.post("/", async (req, res) => {
     res.status(400).send("Password not matching");
   }
 });
-app.post("/", async (req, res) => {
+app.post("/signin", async (req, res) => {
   var { username, password } = req.body;
   try {
     var user = await users.findOne({ username: username });
