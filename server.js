@@ -7,17 +7,18 @@ require("dotenv").config();
 app.use(express.static(__dirname + "/"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://nmoukthika14:1234@cluster0.6k5tphz.mongodb.net/void", { useNewUrlParser: true, useUnifiedTopology: true });
 var userSchema = new mongoose.Schema({
   username: String,
   password: String,
+  events : []
 });
-var users = mongoose.model("users", userSchema);
+var users = mongoose.model("login", userSchema);
 app.get("/", (req, res) => {
   res.set({
     "Allow-access-Allow-Origin": "*",
   });
-  return res.redirect("/signin");
+  return res.redirect("/signin.html");
 });
 app.post("/register", async (req, res) => {
   var username = req.body.username
@@ -34,7 +35,7 @@ app.post("/register", async (req, res) => {
     };
     try {
       await users.create(data);
-      res.redirect("");
+      res.redirect("signin.html");
     } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");
@@ -53,12 +54,12 @@ app.post("/signin", async (req, res) => {
       var pass = await bcrypt.compare(password, user.password);
 
       if (pass) {
-        res.redirect("");
+        res.send("loggedin");
       } else {
-        res.redirect("");
+        res.redirect("signin.html");
       }
     } else {
-      res.redirect("");
+      res.redirect("signin.html");
     }
   } catch (err) {
     console.error(err);

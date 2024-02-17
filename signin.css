@@ -110,7 +110,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  color: #E64835	
+  color: #4ed2d9;	
 }
 .login h2 {
   font-size: 2em;
@@ -119,7 +119,7 @@ body {
 .login .inputBx {
   position: relative;
   width: 100%;
-  color: #E64835;	
+  color: #4ed2d9;	
 }
 .login .inputBx input {
   position: relative;
@@ -135,7 +135,7 @@ body {
 }
 .login .inputBx input[type="submit"] {
   width: 100%;
-  background: #E64835;
+  background: #4ed2d9;
   background: linear-gradient(45deg, #b735ff, #25cb6f);
   border: none;
   cursor: pointer;
@@ -152,6 +152,6 @@ body {
   padding: 0 20px;
 }
 .login .links a {
-  color: #;
+  color: #fff;
   text-decoration: none;
 }
