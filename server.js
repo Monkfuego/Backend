@@ -1,79 +1,73 @@
-var bodyParser = require("body-parser");
-var express = require("express");
-var app = express();
-var bcrypt = require("bcrypt");
-var mongoose = require("mongoose");
+const express = require("express");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 require("dotenv").config();
+
+const app = express();
+const PORT = process.env.PORT || 200;
+
 app.use(express.static(__dirname + "/"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-mongoose.connect("mongodb+srv://nmoukthika14:1234@cluster0.6k5tphz.mongodb.net/void", { useNewUrlParser: true, useUnifiedTopology: true });
-var userSchema = new mongoose.Schema({
+
+mongoose.connect('mongodb+srv://nmoukthika14:1234@cluster0.6k5tphz.mongodb.net/void', { useNewUrlParser: true, useUnifiedTopology: true });
+const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  name : String,
-  events : ["vr" , "vr" , "laser" , "laser"]
+  name: String,
+  events: [{ type: String }]
 });
-var users = mongoose.model("login", userSchema);
+const User = mongoose.model("login", userSchema);
+
 app.get("/", (req, res) => {
   res.set({
     "Allow-access-Allow-Origin": "*",
   });
   return res.redirect("/signin.html");
 });
+
 app.post("/register", async (req, res) => {
-  var username = req.body.username
-  var password = req.body.password
-  var name = req.body.name
+  const { username, password, name, confirmPassword } = req.body;
 
-  var confirmPassword = req.body.confirmPassword
+  if (password !== confirmPassword) {
+    return res.status(400).send("Password not matching");
+  }
 
-
-  if (toString(password) == toString(confirmPassword)) {
+  try {
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    var data = {
-      username: username,
-      password: hashedPassword,
-      name : name
-    };
-    try {
-      await users.create(data);
-      res.redirect("signin.html");
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Internal Server Error");
-    }
-  } 
-  else {
-    res.status(400).send("Password not matching");
+    await User.create({ username, password: hashedPassword, name });
+    res.redirect("/signin.html");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
   }
 });
+
 app.post("/signin", async (req, res) => {
-  var username = req.body.username
-  var password  = req.body.password
-  var name = req.body.name
+  const { username, password } = req.body;
+
   try {
-    var user = await users.findOne({ username: username });
-    module.exports = user
+    const user = await User.findOne({ username });
 
-    if (user) {
-      var pass = await bcrypt.compare(password, user.password);
+    if (!user) {
+      return res.redirect("/signin.html");
+    }
 
-      if (pass) {
-        res.redirect("main.html")
-      } else {
-        res.redirect("signin.html");
-      }
+    const pass = await bcrypt.compare(password, user.password);
+
+    if (pass) {
+      return res.send({ username: user.username, events: user.events });
     } else {
-      res.redirect("signin.html");
+      return res.redirect("/signin.html");
     }
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
 });
-var PORT = process.env.PORT || 200;
+
 app.listen(PORT, () => {
   console.log("Server is running on port", PORT);
 });
+
