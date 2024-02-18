@@ -1,105 +1,41 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4"></script>
 </head>
 <body>
   <header class="header">
+    <a href="#" class="logo">LOGO</a>
+    <nav class="navbar"></nav>
+  </header>
 
-    <a href="#" class="logo"> LOGO</a>
-    <nav class="navbar">
-        </nav>
-    </div>
-</header>    
-<section class="home" id="home">
+  <section class="home" id="home">
     <div class="content">
-        <h3>Welcome <span>USER</span></h3>
-        <p>Reg No.- </p>
-        <p placehoder="Event Reg List"></p>
+      <h3>Welcome <span>USER</span></h3>
+      <p>Reg No.-</p>
+      <p placehoder="Event Reg List"></p>
     </div>
-</section>
-<section class="blogs" id="blogs">
-    <h1 class="heading"> VTAPP <span>  EVENTS </span> </h1>
-    <div class="box-container">
+  </section>
 
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 10th July, 2022 </a>
-                </div>
-                <h3>EVENT 1</h3>
-                <p>details </p>
-                <a href="" class="btn">CHECK</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 11th July, 2022 </a>
-                </div>
-                <h3>Event 2</h3>
-                <p>Details </p>
-                <a href="#" class="btn">CHECK</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 10th July, 2022 </a>
-                </div>
-                <h3>EVENT 1</h3>
-                <p>details </p>
-                <a href="" class="btn">CHECK</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 10th July, 2022 </a>
-                </div>
-                <h3>EVENT 1</h3>
-                <p>details </p>
-                <a href="" class="btn">CHECK</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 10th July, 2022 </a>
-                </div>
-                <h3>EVENT 1</h3>
-                <p>details </p>
-                <a href="" class="btn">CHECK</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="" alt="">
-            <div class="content">
-                <div class="icons">
-                    <a href="#"></i> Venue </a>
-                    <a href="#"> <i class="fas fa-calendar"></i> 12th July, 2022 </a>
-                </div>
-                <h3>Event 3</h3>
-                <p>Details </p>
-                <a href="#" class="btn">CHECK</a>
-            </div>
-        </div>
+  <section class="blogs" id="blogs">
+    <h1 class="heading">VTAPP <span>EVENTS</span></h1>
+    <div class="box-container">
+      </div>
+  </section>
+
+  <div id="qr-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="qr-code"></div>
     </div>
-</section>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
