@@ -20,13 +20,28 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("login", userSchema);
 
-app.get("/", (req, res) => {
-  res.set({
-    "Allow-access-Allow-Origin": "*",
-  });
-  return res.redirect("/signin.html");
+// Route to generate QR code for a specific event
+// Route to generate QR code for a specific event
+app.get("/generateQR", async (req, res) => {
+  const eventName = req.query.event; // Get the event name from the query parameter
+
+  try {
+    // Here you can generate the QR code using any library you prefer
+    // For simplicity, mock the QR code data
+    const qrCodeData = {
+      qrCode: `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${eventName}&size=200x200" alt="QR Code">`
+    };
+
+    // Send the QR code data back to the client
+    res.json(qrCodeData);
+  } catch (error) {
+    console.error('Error generating QR code:', error);
+    res.status(500).json({ error: 'Error generating QR code' });
+  }
 });
 
+
+// Route for user registration
 app.post("/register", async (req, res) => {
   const { username, password, name, confirmPassword } = req.body;
 
@@ -44,6 +59,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
+// Route for user sign-in
 app.post("/signin", async (req, res) => {
   const { username, password } = req.body;
 
@@ -55,10 +71,10 @@ app.post("/signin", async (req, res) => {
     }
 
     var pass = false
-    if(toString(password) == toString(user.password)){
+    if (toString(password) == toString(user.password)) {
       pass = true
     }
-    else{
+    else {
       pass = false
     }
 
@@ -107,7 +123,7 @@ app.post("/signin", async (req, res) => {
                           </div>
                           <h3>${countFrequency(events)[0]}</h3>
                           <p>details </p>
-                          <a href="" class="btn">CHECK</a>
+                          <a href="" class="check-btn" data-event="${countFrequency(events)[0]}">CHECK</a>
                       </div>
                   </div>
                   <div class="box">
@@ -119,12 +135,16 @@ app.post("/signin", async (req, res) => {
                           </div>
                           <h3>${countFrequency(events)[1]}</h3>
                           <p>Details </p>
-                          <a href="#" class="btn">CHECK</a>
+                          <a href="#" class="check-btn" data-event="${countFrequency(events)[1]}">CHECK</a>
                       </div>
                   </div>
                   </div>
               </div>
-          </section>`
+          </section>
+          <div id="qr-code-container"></div>
+          <script src="main.js"></script>
+      </body>
+      </html>`
       );
 
     } else {
