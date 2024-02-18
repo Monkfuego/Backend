@@ -1,18 +1,21 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const response = await fetch("/signin");
-    const data = await response.json();
-
-    document.getElementById("regid").textContent = data.name;
-    document.getElementById("userid").textContent = data.username;
-
-    const eventFreq = countFrequency(data.events);
-    document.getElementById("eventFreq").textContent = eventFreq;
-  } catch (error) {
-    console.error("Error fetching user details:", error);
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  // Fetch data from the server after a successful login
+  fetch('/signin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // Include any login credentials here if needed
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Manipulate the DOM with the received data
+    document.getElementById('regid').innerText = `Registration ID: ${data.username}`;
+    document.getElementById('userid').innerText = `User ID: ${data.name}`;
+    document.getElementById('eventFreq').innerText = `Events: ${data.events.join(', ')}`;
+  })
+  .catch(error => console.error('Error fetching data:', error));
 });
-
 function countFrequency(arr) {
   const frequency = {};
 
