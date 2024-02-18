@@ -1,0 +1,135 @@
+[
+    {
+      "username": "john_doe",
+      "password": "password123",
+      "name": "John Doe",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "alice_smith",
+      "password": "secure_pass",
+      "name": "Alice Smith",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "bob_jones",
+      "password": "secret_word",
+      "name": "Bob Jones",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "emma_watson",
+      "password": "emma123",
+      "name": "Emma Watson",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "michael_smith",
+      "password": "mike_pass",
+      "name": "Michael Smith",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "olivia_brown",
+      "password": "olivia456",
+      "name": "Olivia Brown",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "jackson_davis",
+      "password": "jackson789",
+      "name": "Jackson Davis",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "sophia_johnson",
+      "password": "sophia_pass",
+      "name": "Sophia Johnson",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "daniel_clark",
+      "password": "daniel567",
+      "name": "Daniel Clark",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "grace_miller",
+      "password": "grace_pass",
+      "name": "Grace Miller",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "william_hall",
+      "password": "william890",
+      "name": "William Hall",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "samantha_wright",
+      "password": "samantha_pass",
+      "name": "Samantha Wright",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "jacob_carter",
+      "password": "jacob123",
+      "name": "Jacob Carter",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "ava_morris",
+      "password": "ava_pass",
+      "name": "Ava Morris",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "ethan_hughes",
+      "password": "ethan456",
+      "name": "Ethan Hughes",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "olivia_fisher",
+      "password": "olivia_pass",
+      "name": "Olivia Fisher",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "aiden_campbell",
+      "password": "aiden789",
+      "name": "Aiden Campbell",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "madison_martin",
+      "password": "madison_pass",
+      "name": "Madison Martin",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "liam_cooper",
+      "password": "liam123",
+      "name": "Liam Cooper",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "chloe_bell",
+      "password": "chloe_pass",
+      "name": "Chloe Bell",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "noah_harrison",
+      "password": "noah456",
+      "name": "Noah Harrison",
+      "events": ["vr", "vr", "laser", "laser"]
+    },
+    {
+      "username": "amelia_turner",
+      "password": "amelia_pass",
+      "name": "Amelia Turner",
+      "events": ["vr", "vr", "laser", "laser"]
+    }
+  ]
+  

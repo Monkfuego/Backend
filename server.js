@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
   username: String,
   password: String,
   name : String,
-  events : [{"vr" : 3} , {"laser" : 3} , {"dance" : 3}]
+  events : ["vr" , "vr" , "laser" , "laser"]
 });
 var users = mongoose.model("login", userSchema);
 app.get("/", (req, res) => {
@@ -55,12 +55,13 @@ app.post("/signin", async (req, res) => {
   var name = req.body.name
   try {
     var user = await users.findOne({ username: username });
+    module.exports = user
 
     if (user) {
       var pass = await bcrypt.compare(password, user.password);
 
       if (pass) {
-        res.redirect("main.html");
+        res.send(user.username , user.events);
       } else {
         res.redirect("signin.html");
       }
