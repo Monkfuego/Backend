@@ -61,7 +61,7 @@ app.post("/signin", async (req, res) => {
       var pass = await bcrypt.compare(password, user.password);
 
       if (pass) {
-        res.send(user.username , user.events);
+        res.redirect("main.html")
       } else {
         res.redirect("signin.html");
       }

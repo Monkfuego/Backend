@@ -30,7 +30,3 @@ function countFrequency(arr) {
       console.log(item + ": " + frequency[item] + " times");
     }
   }
-event_reg = countFrequency(event)
-document.getElementById("regid").innerHTML = name
-document.getElementById("userid").innerHTML = regid
-document.getElementById("userid").innerHTML = event_reg
